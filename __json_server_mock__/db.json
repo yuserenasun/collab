@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Smith"
+    },
+    {
+      "id": 2,
+      "name": "Bob White"
+    },
+    {
+      "id": 3,
+      "name": "Cathy Ling"
+    },
+    {
+      "id": 4,
+      "name": "Dave Hughes"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "build API",
+      "personId": 1,
+      "organization": "OPS",
+      "created": 1604989757139
+    },
+    {
+      "id": 2,
+      "name": "Build Android App",
+      "personId": 2,
+      "organization": "Mobile Dev",
+      "created": 1604989757139
+    },
+    {
+      "id": 3,
+      "name": "Update server request",
+      "personId": 2,
+      "organization": "Backend",
+      "created": 1546300800000
+    },
+    {
+      "id": 4,
+      "name": "Data cleaning",
+      "personId": 3,
+      "organization": "Data",
+      "created": 1604980000011
+    },
+    {
+      "id": 5,
+      "name": "Onboard interns",
+      "personId": 4,
+      "organization": "HR",
+      "created": 1546900800000
+    }
+  ]
+}
