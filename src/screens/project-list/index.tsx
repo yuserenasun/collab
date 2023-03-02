@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "utils";
 import qs from "qs";
 
+// backend url from environment
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const ProjectListScreen = () => {
@@ -15,6 +16,7 @@ export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
   const debouncedParam = useDebounce(param, 200);
 
+  // monitor the change of search input -> change of param
   useEffect(() => {
     fetch(
       `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
@@ -26,7 +28,7 @@ export const ProjectListScreen = () => {
   }, [debouncedParam]);
 
   useMount(() => {
-    fetch(`${apiUrl}/users`).then(async (response) => {
+    fetch(`${apiUrl}/users`).then(async(response) => {
       if (response.ok) {
         setUsers(await response.json());
       }

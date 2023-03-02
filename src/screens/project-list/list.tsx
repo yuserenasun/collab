@@ -1,3 +1,4 @@
+import React from "react";
 import { User } from "./search-panel";
 
 interface Project {
@@ -13,7 +14,7 @@ interface ListProps {
   users: User[];
 }
 
-export const List = ({ users, list }: ListProps) => {
+export const List = ({  list, users }: ListProps) => {
   return (
     <table>
       <thead>
