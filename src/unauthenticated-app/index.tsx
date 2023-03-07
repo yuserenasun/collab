@@ -7,7 +7,7 @@ export const UnauthenticatedApp = () => {
     return (
         <div>
             {
-                isRegistered? <RegisterScreen/>:<LoginScreen/>
+                isRegistered? <RegisterScreen/> : <LoginScreen/>
             }
             <button onClick={() => setIsRegistered(!isRegistered)}>Change to {isRegistered? 'Login': 'Register'}</button>
         </div>

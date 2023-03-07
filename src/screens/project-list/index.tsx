@@ -2,37 +2,28 @@ import { SearchPanel } from "./search-panel";
 import { List } from "./list";
 import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "utils";
-import qs from "qs";
+import { useHttp } from "utils/http";
 
 // backend url from environment
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const ProjectListScreen = () => {
+  const [users, setUsers] = useState([]);
   const [param, setParam] = useState({
     name: "",
     personId: "",
   });
-  const [list, setList] = useState([]);
-  const [users, setUsers] = useState([]);
   const debouncedParam = useDebounce(param, 200);
+  const [list, setList] = useState([]);
+  const client = useHttp();
 
   // monitor the change of search input -> change of param
   useEffect(() => {
-    fetch(
-      `${apiUrl}/projects?${qs.stringify(cleanObject(debouncedParam))}`
-    ).then(async (response) => {
-      if (response.ok) {
-        setList(await response.json());
-      }
-    });
+    client("projects", {data: cleanObject(debouncedParam)}).then(setList);
   }, [debouncedParam]);
 
   useMount(() => {
-    fetch(`${apiUrl}/users`).then(async(response) => {
-      if (response.ok) {
-        setUsers(await response.json());
-      }
-    });
+    client("users").then(setUsers)
   }); // empty array, only load once
 
   return (
